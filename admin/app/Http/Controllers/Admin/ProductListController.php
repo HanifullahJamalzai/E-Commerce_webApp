@@ -10,7 +10,7 @@ class ProductListController extends Controller
 {
     public function ProductListByRemark(Request $request){
         $remark = $request->remark;
-        $productList = ProductList::where('remark', $remark)->get();
+        $productList = ProductList::where('remark', $remark)->limit(8)->get();
         return $productList;
     } //End Method
     

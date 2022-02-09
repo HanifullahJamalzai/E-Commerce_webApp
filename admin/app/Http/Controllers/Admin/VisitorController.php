@@ -9,6 +9,7 @@ use App\Models\Visitor;
 class VisitorController extends Controller
 {
     public function GetVisitorDetails(){
+        // $ip_address = $request->ip();
         $ip_address = $_SERVER['REMOTE_ADDR'];
         date_default_timezone_set('Asia/Kabul');
         $visit_time = date("h:i:sa");
