@@ -31,7 +31,9 @@ Route::get('/productlistbysubcategory/{category}/{subcategory}', [ProductListCon
 Route::get('/allslider', [SliderController::class, 'AllSliders']);
 //ProductDetails Route
 Route::get('/productdetails/{id}', [ProductDetailsController::class, 'ProductDetails']);
-
 //Notification Route
 Route::get('/notification', [NotificationController::class, 'NotificationHistory']);
+
+//Search Route
+Route::get('/search/{key}', [ProductListController::class, 'ProductBySearch']);
 
