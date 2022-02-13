@@ -4,7 +4,12 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
 use Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use DB;
+
 class AuthController extends Controller
 {
     public function Login(Request $request){
@@ -27,5 +32,28 @@ class AuthController extends Controller
         return response([
             'message' => 'Invalid Email or Password'
         ],401);
-    }
-} //End Method
+    }//End Method
+
+    public function Register(RegisterRequest $request){
+        try{
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password)
+            ]);
+            $token = $user->createToken('app')->accessToken;
+
+            return response([
+                'message' => "Registration Successfully Done",
+                'token' => $token,
+                'user' => $user,
+            ], 200);
+
+        }catch(Exception $exception){
+            response([
+                'message' => $exception->getMessage(), 
+            ], 400);
+        }
+    }// End Method
+} 
+

@@ -18,6 +18,9 @@ use App\Http\Controllers\User\AuthController;
 
 // Login
 Route::post('/login', [AuthController::class, 'Login']);
+// Register
+Route::post('/register', [AuthController::class, 'Register']);
+
 // Get Visitor
 Route::get('/getvisitor', [VisitorController::class, 'GetVisitorDetails']);
 // Contact Page Route
