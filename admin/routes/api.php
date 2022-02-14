@@ -10,19 +10,27 @@ use App\Http\Controllers\Admin\ProductListController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductDetailsController;
 use App\Http\Controllers\Admin\NotificationController;
+
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\ForgetController;
+use App\Http\Controllers\User\ResetController;
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
 
-// Login
+// ------------Start: User Login API ----------------------------------
+
+// Register route
 Route::post('/login', [AuthController::class, 'Login']);
-// Register
+// Register password route
 Route::post('/register', [AuthController::class, 'Register']);
-// forget
-Route::post('/forget', [ForgetController::class, 'ForgetPassword']);
+// forget password route
+Route::post('/forgetpassword', [ForgetController::class, 'ForgetPassword']);
+// reset password route
+Route::post('/resetpassword', [ResetController::class, 'ResetPassword']);
+
+// ------------End: User Login API -------------------------------------
 
 // Get Visitor
 Route::get('/getvisitor', [VisitorController::class, 'GetVisitorDetails']);

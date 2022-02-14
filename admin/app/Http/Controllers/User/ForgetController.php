@@ -30,7 +30,7 @@ class ForgetController extends Controller
                 'token' => $token,
             ]);
 
-            // Mail send to End-User
+            // Mail send to user
             Mail::to($email)->send(new ForgetMail($token));
 
             // Success response
@@ -38,6 +38,7 @@ class ForgetController extends Controller
                 'message' => 'Reset Password has been sent to your email'
             ]);
 
+            // if any error
         }catch(Exception $exception){
             return response([
                 'message'=> $exception->getMessage()
