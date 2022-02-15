@@ -19,7 +19,7 @@ class ForgetController extends Controller
         if(User::where('email',$email)->doesntExist()){
             return response([
                 'message' => 'Email Is Invalid'
-            ]);
+            ],401);
         }
         // Token generate
         $token = rand(10,1000000);
@@ -36,7 +36,7 @@ class ForgetController extends Controller
             // Success response
             return response([
                 'message' => 'Reset Password has been sent to your email'
-            ]);
+            ],200);
 
             // if any error
         }catch(Exception $exception){
