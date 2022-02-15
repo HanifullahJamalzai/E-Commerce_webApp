@@ -16,6 +16,8 @@ use App\Http\Controllers\User\ForgetController;
 use App\Http\Controllers\User\ResetController;
 use App\Http\Controllers\User\UserController;
 
+use App\Http\Controllers\Admin\ReviewController;
+
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
@@ -49,13 +51,16 @@ Route::get('/productlistbycategory/{category}', [ProductListController::class, '
 Route::get('/productlistbysubcategory/{category}/{subcategory}', [ProductListController::class, 'ProductListBySubCategory']);
 // Slider Route
 Route::get('/allslider', [SliderController::class, 'AllSliders']);
-//ProductDetails Route
+// ProductDetails Route
 Route::get('/productdetails/{id}', [ProductDetailsController::class, 'ProductDetails']);
-//Notification Route
+// Notification Route
 Route::get('/notification', [NotificationController::class, 'NotificationHistory']);
 
-//Search Route
+// Search Route
 Route::get('/search/{key}', [ProductListController::class, 'ProductBySearch']);
 
-//Similar product list
+// Similar product list
 Route::get('/similarproduct/{subcategory}', [ProductListController::class, 'SimilarProduct']);
+
+// Product Review
+Route::get('/reviewlist/{id}', [ReviewController::class, 'ReviewList']);
