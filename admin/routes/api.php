@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProductListController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductDetailsController;
 use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\ProductCartController;
 
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\ForgetController;
@@ -59,8 +60,11 @@ Route::get('/notification', [NotificationController::class, 'NotificationHistory
 // Search Route
 Route::get('/search/{key}', [ProductListController::class, 'ProductBySearch']);
 
-// Similar product list
+// Similar product list Route
 Route::get('/similarproduct/{subcategory}', [ProductListController::class, 'SimilarProduct']);
 
-// Product Review
+// Product Review Route
 Route::get('/reviewlist/{id}', [ReviewController::class, 'ReviewList']);
+
+// Product Cart Route 
+Route::post('/addtocart', [ProductCartController::class, 'AddToCart']);
