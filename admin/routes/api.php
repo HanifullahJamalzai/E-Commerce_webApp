@@ -68,3 +68,10 @@ Route::get('/reviewlist/{id}', [ReviewController::class, 'ReviewList']);
 
 // Product Cart Route 
 Route::post('/addtocart', [ProductCartController::class, 'AddToCart']);
+
+// Product CartCount Route 
+// Route::get('/cartcount/{product_code}', [ProductCartController::class, 'CartCount']);
+
+Route::get('/cartcount', [ProductCartController::class, 'MyCartCount']);
+
+
