@@ -69,15 +69,14 @@ Route::get('/reviewlist/{id}', [ReviewController::class, 'ReviewList']);
 
 // Product Cart Route 
 Route::post('/addtocart', [ProductCartController::class, 'AddToCart']);
-
 // Product CartCount Route 
 // Route::get('/cartcount/{product_code}', [ProductCartController::class, 'CartCount']);
-
 Route::get('/cartcount', [ProductCartController::class, 'MyCartCount']);
 
 // Favorite Routes
 Route::post('/addtofavorite/{email}/{product_code}', [FavoriteController::class, 'AddToFavorite']);
-// FavoriteList Routes
 Route::get('/favoritelist/{email}', [FavoriteController::class, 'FavoriteList']);
-// Favorite Remove Routes
 Route::post('/favoriteremove/{email}/{product_code}', [FavoriteController::class, 'FavoriteRemove']);
+
+// Cart List Routes
+Route::get('/cartlist/{email}', [ProductCartController::class, 'CartList']);
