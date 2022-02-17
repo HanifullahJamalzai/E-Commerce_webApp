@@ -83,3 +83,6 @@ Route::get('/cartlist/{email}', [ProductCartController::class, 'CartList']);
 Route::post('/cartitemremove/{email}/{product_code}', [ProductCartController::class, 'CartItemRemove']);
 Route::get('/cartitemminus/{id}/{quantity}/{price}', [ProductCartController::class, 'CartItemMinus']);
 Route::get('/cartitemplus/{id}/{quantity}/{price}', [ProductCartController::class, 'CartItemPlus']);
+
+// Cart Order Route
+Route::post('/cartorder', [ProductCartController::class, 'CartOrder']);
