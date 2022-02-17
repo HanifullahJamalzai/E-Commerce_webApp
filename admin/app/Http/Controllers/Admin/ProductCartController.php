@@ -60,4 +60,44 @@ class ProductCartController extends Controller
         $result = ProductCart::where('email', $email)->get();
         return $result;
     } // End Method
+    
+    public function CartItemRemove(Request $request){
+        $email = $request->email;
+        $product_code = $request->product_code;
+
+        $result = ProductCart::where('email', $email)->where('product_code', $product_code)->delete();
+
+        return $result;
+    } // End Method
+
+    public function CartItemMinus(Request $request){
+        $id = $request->id;
+        $quantity = $request->quantity;
+        $price = $request->price;
+        
+        $updated_quantity = $quantity - 1;
+        $total = $price*$updated_quantity;
+
+        $result = ProductCart::where('id', $id)->update([
+            'quantity' => $updated_quantity,
+            'total_price' => $total
+        ]);
+
+        return $result;
+    }
+    public function CartItemPlus(Request $request){
+        $id = $request->id;
+        $quantity = $request->quantity;
+        $price = $request->price;
+        
+        $updated_quantity = $quantity + 1;
+        $total = $price*$updated_quantity;
+
+        $result = ProductCart::where('id', $id)->update([
+            'quantity' => $updated_quantity,
+            'total_price' => $total
+        ]);
+
+        return $result;
+    }
 }
