@@ -102,7 +102,55 @@ class ProductCartController extends Controller
         return $result;
     } // End Method
 
-    public function CartOrder(){
+    public function CartOrder(Request $request){
+        $city = $request->input('city');
+        $paymentMethod = $request->input('payment_method');
+        $yourName = $request->input('name');
+        $email = $request->input('email');
+        $deliveryAddress = $request->input('delivery_address');
+        $invoiceNo = $request->input('invoice_no');
+        $deliveryCharge = $request->input('delivery_charge');
+
+        date_default_timezone_set("Asia/Kabul");
+        $requestTime = date("h:i:sa"); 
+        $requestDate = date("d:m:Y"); 
+
+        $cartList = ProductCart::where('email', $email)->get();
+
+        foreach($cartList as $cartListItem){
+            $cartInsertDeleteResult = "";
+            $resultInsert = CartOrder::insert([
+                'invoice_no' => "Easy ".$invoiceNo,
+                'product_name' => $cartListItem['product_name'],
+                'product_code' => $cartListItem['product_code'],
+                'size' => $cartListItem['size'],
+                'color' => $cartListItem['color'],
+                'quantity' => $cartListItem['quantity'],
+                'unit_price' => $cartListItem['unit_price'],
+                'total_price' => $cartListItem['total_price'],
+                'email' => $email,
+                'name' => $yourName,
+                'payment_method' => $paymentMethod,
+                'delivery_address' => $deliveryAddress,
+                'city' => $city,
+                'delivery_charge' => $deliveryCharge,
+                'order_date' => $requestDate,
+                'order_time' => $requestTime,
+                'order_status' => "Pending",
+            ]);
+
+            if($resultInsert == 1){
+                $resultDelete = ProductCart::where('id', $cartListItem['id'])->delete();
+                if($resultDelete == 1){
+                    $cartInsertDeleteResult = 1;
+                }else{
+                    $cartInsertDeleteResult = 0;
+                }
+            }
+
+        }
+
+        return $cartInsertDeleteResult;
 
     } // End Method
 }
