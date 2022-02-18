@@ -153,4 +153,10 @@ class ProductCartController extends Controller
         return $cartInsertDeleteResult;
 
     } // End Method
+
+    public function OrderListByOrder(Request $request){
+        $email = $request->email;
+        $result = CartOrder::where('email', $email)->get();
+        return $result;
+    } // End Method
 }
