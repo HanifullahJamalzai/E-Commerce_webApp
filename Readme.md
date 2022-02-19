@@ -4,6 +4,14 @@
 
 ## Features
 
-- Usually People use big libraries to have live search, modals and carousels
-- Actually it is possible with simple and pure JS
-- To have good performance it is good practice to create with pure JS
+- RESTFULL API with LARAVEL
+- BACKEND done with Laravel
+- FRONTEND done with React.js
+
+## How to use
+
+- Laravel -> composer install
+- Laravel-> npm install && npm run dev
+- laravel : php artisan serve
+- React.js: npm install
+- React.js: npm start

@@ -46,8 +46,8 @@ class ProductCartController extends Controller
     } // End Method
 
     public function CartCount(Request $request){
-        $product_code = $request->product_code;
-        $result = ProductCart::count();
+        $email = $request->email;
+        $result = ProductCart::where('email', $email)->count();
         return $result;
     } // End Method
 

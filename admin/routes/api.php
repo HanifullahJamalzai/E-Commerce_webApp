@@ -70,7 +70,7 @@ Route::post('/postreview', [ReviewController::class, 'PostReview']);
 
 // Product Cart Route 
 Route::post('/addtocart', [ProductCartController::class, 'AddToCart']);
-// Route::get('/cartcount/{product_code}', [ProductCartController::class, 'CartCount']);
+Route::get('/cartcount/{email}', [ProductCartController::class, 'CartCount']);
 Route::get('/cartcount', [ProductCartController::class, 'MyCartCount']);
 
 // Favorite Routes
