@@ -10,8 +10,8 @@
 
 ## How to use
 
-- Laravel -> composer install
-- Laravel-> npm install && npm run dev
+- Laravel : composer install
+- Laravel : npm install && npm run dev
 - laravel : php artisan serve
 - React.js: npm install
 - React.js: npm start
